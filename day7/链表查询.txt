@@ -1,0 +1,85 @@
+-- 增，删，改，查
+
+-- 创建数据库
+CREATE DATABASE  lt CHARACTER  SET utf8;
+
+-- 创建表
+CREATE  TABLE person(
+	username VARCHAR(20),
+	age INT,
+	sex VARCHAR(10),
+        sal  DOUBLE(10,2),  # 99999999.99	
+	hiredate TIMESTAMP  # 
+);
+-- 添加数据
+INSERT INTO person VALUES("尉超会",82,"男",2000.36,"2021-09-27 15:36:56")
+
+INSERT INTO person VALUES
+("尉超上",82,"男",2000.36,"2021-09-27 15:36:56"),
+("尉超下",72,"女",1900.36,"1999-09-27 15:36:56"),
+("尉超左",62,"女",2500.36,"2020-09-27 15:36:56"),
+("尉超右",52,"男",3000.36,"1998-09-27 15:36:56");
+
+-- 改update
+UPDATE person   SET sal = sal - 1000  WHERE age < 70
+
+-- 删除：delete
+DELETE FROM person WHERE age < 70
+
+-- 查询：单表查询，多表查询，自表查询，嵌套查询，
+-- 查询所有数据
+SELECT * FROM t_employees WHERE sal > 5000
+
+-- 查询每个部门有多少人
+SELECT deptno,COUNT(*) 人数
+FROM t_employees
+GROUP BY deptno
+
+
+-- 查询工资最高的前三名
+SELECT *
+FROM t_employees
+ORDER BY sal DESC
+LIMIT 1
+
+
+-- 名字里有“关” 字
+SELECT  *
+FROM t_employees
+WHERE ename LIKE  "%关%"
+
+-- 名字有三个字查询出来,统计一下
+SELECT COUNT(*)
+FROM t_employees
+WHERE ename LIKE "___"
+
+-- 孙权    汉献帝
+-- 刘备    汉献帝
+
+SELECT  * 
+FROM t_employees,t_dept
+-- 17 * 5 = 85  链表查询必须，消除笛卡尔积。过滤垃圾数据
+SELECT  * 
+FROM t_employees,t_dept
+WHERE t_employees.`deptno` = t_dept.`deptno`
+-- mysql方言式查询 ,自表查询
+SELECT t1.ename,t2.ename
+FROM t_employees  t1,t_employees  t2
+WHERE t1.mgr = t2.empno
+
+-- iso:国际标准
+SELECT  t1.ename,t2.ename
+FROM t_employees t1 LEFT JOIN t_employees t2
+ON t1.mgr = t2.empno
+
+-- 周瑜所在部门名称
+SELECT ename,dname
+FROM t_employees,t_dept
+WHERE t_employees.`deptno` = t_dept.`deptno`
+
+
+
+
+
+
+

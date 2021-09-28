@@ -8,12 +8,13 @@ print("|------------4、转账              ------------|")
 print("|------------5、查询              ------------|")
 print("|------------6、退出              ------------|")
 print("==============================================")
-bank={'Frank': {'password': '12345', 'country': '中国', 'province': '山东', 'street': '001', 'door': '002', 'account': 38340677, 'money': 20000},
+bank = {'Frank': {'password': '12345', 'country': '中国', 'province': '山东', 'street': '001', 'door': '002', 'account': 38340677, 'money': 20000},
 'admin': {'password': '123', 'country': '中国', 'province': '北京', 'street': '001', 'door': '002', 'account': 98762739, 'money': 30000},
 'aaa': {'password': '1234', 'country': '中国', 'province': '上海', 'street': '001', 'door': '002', 'account': 17263849, 'money': 40000}}
 #{'Frank': {'password': '123456', 'country': '中国', 'province': '山东', 'street': '001', 'door': '002', 'account': 38340677, 'money': 0}}
 bank_name="王者荣耀分行"#全局变量
 
+#银行的开户逻辑
 def bank_adduser(username,password,country,province,street,door,account,money):
     if username in bank:  # 如果一个变量在容器内就运行代码
         return 2
@@ -32,6 +33,7 @@ def bank_adduser(username,password,country,province,street,door,account,money):
     }
     return 1
 
+#用户的开户操作逻辑
 def useradd():
     username=input("请输入您的用户名：") # 局部变量
     password = input("请输入密码：") # print(bank['Frank']['password'])
@@ -71,6 +73,7 @@ def bank_savemoney(account, save_money):
     else:
         bank[account]["money"] = bank[account]["money"] + save_money
         return True
+
 #存钱操作逻辑
 def savemoney():
     account = input("请输入您的账号：")

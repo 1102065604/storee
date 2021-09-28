@@ -1,4 +1,4 @@
-print("青输入两个整数：")
+print("请输入两个整数：")
 A = int(input("A为："))
 B = int(input("B为："))
 A = A + B

@@ -62,7 +62,6 @@ def useradd():
         sql = 'select money from gh where username= %s'
         param = [username]
         data = select(sql, param, mode='one')[0]
-        print(data)
         print(info % (username, account, password, country, province, street, door, data, bankname))
     elif useradd ==2:
         print("用户已存在")
@@ -97,7 +96,7 @@ def savemoney():
 
 ##取钱逻辑
 # def bank_givemoney(account, password, give_money):
-#     if account not in bank:
+#     if account not in bank
 #         return 1
 #     elif password != bank[account]["password"]:
 #         return 2
